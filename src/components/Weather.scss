@@ -1,0 +1,34 @@
+  .content{
+    display: flex;
+    height: 520px;
+    width: 100%;
+    background-color: green;
+    border-radius: 15px;
+    padding-left: 35px;
+    box-sizing: border-box;
+    .information{
+      height: 100%;
+      width: calc(100% - 450px);
+      background-color: blue;
+      padding: 25px 0;
+      box-sizing: border-box;
+      .city{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80px;
+        width: 210px;
+        margin-bottom: 30px;
+        p{
+          font-family: Roboto;
+          font-size: 70px;
+          color: #ffffff;
+        }
+      }
+    }
+    .dayList{
+      height: 100%;
+      width: 450px;
+      background-color: beige;
+    }
+  }

@@ -1,0 +1,49 @@
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 520px;
+  width: 100%;
+  background-color: green;
+  border-radius: 15px;
+  padding-left: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.content .information {
+  height: 100%;
+  width: calc(100% - 450px);
+  background-color: blue;
+  padding: 25px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.content .information .city {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80px;
+  width: 210px;
+  margin-bottom: 30px;
+}
+
+.content .information .city p {
+  font-family: Roboto;
+  font-size: 70px;
+  color: #ffffff;
+}
+
+.content .dayList {
+  height: 100%;
+  width: 450px;
+  background-color: beige;
+}
+/*# sourceMappingURL=Weather.css.map */
