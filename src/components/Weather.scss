@@ -2,15 +2,19 @@
     display: flex;
     height: 520px;
     width: 100%;
-    background-color: green;
+    // background-color: green;
     border-radius: 15px;
     padding-left: 35px;
     box-sizing: border-box;
+    // background-image: url(../assets/54115c7c43151.jpg);
+    background-image: url(../assets/87242691_p0.jpg);
+    background-size: cover;
+    filter: blur(0px);
     .information{
       height: 100%;
       width: calc(100% - 450px);
-      background-color: blue;
-      padding: 25px 0;
+      // background-color: blue;
+      padding-top: 25px;
       box-sizing: border-box;
       .city{
         display: flex;
@@ -25,10 +29,92 @@
           color: #ffffff;
         }
       }
+      .weatherData{
+        width: 100%;
+        margin-bottom: 245px;
+        .weatherData__Status{
+          display: flex;
+          align-items: center;
+          margin-bottom: 5px;
+          img{
+            height: 40px;
+            width: 40px;
+            margin-right: 10px;
+          }
+          p{
+            width: auto;
+            font-family: Roboto;
+            font-size: 18px;
+            color: #ffffff;
+            line-height: 20px;
+          }
+        }
+        .temperature-humidity{
+          display: flex;
+          width: 100%;
+          align-items: center;
+          img.temperature{
+            height: 20px;
+            width: 20px;
+            margin-right: 5px;
+          }
+          p.temperature{
+            font-family: Roboto;
+            font-size: 18px;
+            color: #ffffff;
+            margin-right: 5px;
+          }
+          img.humidity{
+            height: 20px;
+            width: 20px;
+            margin-right: 5px;
+          }
+          p.humidity{
+            font-family: Roboto;
+            font-size: 18px;
+            color: #ffffff;
+          }
+        }
+      }
+      .time{
+        // width: 144px;
+        // height: 56px;
+        font-family: Roboto;
+        font-size: 48px;
+        color: #ffffff;
+      }
     }
     .dayList{
       height: 100%;
       width: 450px;
-      background-color: beige;
+      padding-top: 45px;
+      .switchMonth{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 42px;
+        width: 100%;
+        margin-bottom: 13px;
+        .lastMonth{
+          width: 20px;
+          height: 20px;
+        }
+        .yearAndMonth{
+          margin: 0 60px;
+          font-family: Roboto;
+          font-size: 36px;
+          color: #ffffff;
+        }
+        .nextMonth{
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .monthlyCalendar{
+        height: 412px;
+        width: 100%;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+      }
     }
   }

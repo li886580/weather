@@ -4,18 +4,20 @@
   display: flex;
   height: 520px;
   width: 100%;
-  background-color: green;
   border-radius: 15px;
   padding-left: 35px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  background-image: url(../assets/87242691_p0.jpg);
+  background-size: cover;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
 }
 
 .content .information {
   height: 100%;
   width: calc(100% - 450px);
-  background-color: blue;
-  padding: 25px 0;
+  padding-top: 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -41,9 +43,119 @@
   color: #ffffff;
 }
 
+.content .information .weatherData {
+  width: 100%;
+  margin-bottom: 245px;
+}
+
+.content .information .weatherData .weatherData__Status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+
+.content .information .weatherData .weatherData__Status img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.content .information .weatherData .weatherData__Status p {
+  width: auto;
+  font-family: Roboto;
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 20px;
+}
+
+.content .information .weatherData .temperature-humidity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content .information .weatherData .temperature-humidity img.temperature {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.content .information .weatherData .temperature-humidity p.temperature {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+.content .information .weatherData .temperature-humidity img.humidity {
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.content .information .weatherData .temperature-humidity p.humidity {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.content .information .time {
+  font-family: Roboto;
+  font-size: 48px;
+  color: #ffffff;
+}
+
 .content .dayList {
   height: 100%;
   width: 450px;
-  background-color: beige;
+  padding-top: 45px;
+}
+
+.content .dayList .switchMonth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 42px;
+  width: 100%;
+  margin-bottom: 13px;
+}
+
+.content .dayList .switchMonth .lastMonth {
+  width: 20px;
+  height: 20px;
+}
+
+.content .dayList .switchMonth .yearAndMonth {
+  margin: 0 60px;
+  font-family: Roboto;
+  font-size: 36px;
+  color: #ffffff;
+}
+
+.content .dayList .switchMonth .nextMonth {
+  width: 20px;
+  height: 20px;
+}
+
+.content .dayList .monthlyCalendar {
+  height: 412px;
+  width: 100%;
+  border: 1px solid #ffffff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 /*# sourceMappingURL=Weather.css.map */

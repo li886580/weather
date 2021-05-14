@@ -1,16 +1,19 @@
 <template>
   <div class="backgroundImage">
-    <Weather/>
+    <!-- <Weather/> -->
+    <WeatherDetail/>
   </div>
 </template>
 
 <script>
-import Weather from './components/Weather.vue'
+// import Weather from './components/Weather'
+import WeatherDetail from './components/Weather-Detail'
 
 export default {
   name: 'App',
   components: {
-    Weather
+    // Weather,
+    WeatherDetail
   }
 }
 </script>
@@ -23,11 +26,25 @@ export default {
   .backgroundImage{
     display: flex;
     align-items: center;
-    padding: 40px;
-    background-color: gray;
+    padding: 30px;
     height: 100%;
     min-width: 768px;
     box-sizing: border-box;
-    
+    /* background-image: url(./assets/54115c7c43151.jpg); */
+    background-image: url(./assets/87242691_p0.jpg);
+    background-size: cover;
+    position: relative;
+    background-repeat: no-repeat;
+  }
+  .backgroundImage::before{ /* 處理背景圖片模糊不影響子層 */
+    content: "";
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+    background: inherit;
+    filter: blur(50px);
+
   }
 </style>

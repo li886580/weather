@@ -1,0 +1,122 @@
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 520px;
+  width: 100%;
+  border-radius: 15px;
+  padding-left: 35px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-image: url(../assets/87242691_p0.jpg);
+  background-size: cover;
+  -webkit-filter: blur(0px);
+          filter: blur(0px);
+}
+
+.content .information {
+  height: 100%;
+  width: calc(100% - 450px);
+  padding-top: 25px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.content .information .city {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 80px;
+  width: 210px;
+  margin-bottom: 30px;
+}
+
+.content .information .city p {
+  font-family: Roboto;
+  font-size: 70px;
+  color: #ffffff;
+}
+
+.content .information .weatherData {
+  width: 100%;
+}
+
+.content .information .weatherData .weatherData__Status {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 60px;
+}
+
+.content .information .weatherData .weatherData__Status img {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+
+.content .information .weatherData .weatherData__Status p {
+  width: auto;
+  font-family: Roboto;
+  font-size: 18px;
+  color: #ffffff;
+  line-height: 20px;
+}
+
+.content .information .weatherData .weatherData__Detail li {
+  height: 30px;
+  width: 100%;
+  background-color: aqua;
+  margin-bottom: 8px;
+}
+
+.content .information .weatherData .weatherData__Detail li:last-child {
+  margin-bottom: 0px;
+}
+
+.content .dayList {
+  height: 100%;
+  width: 450px;
+  padding-top: 45px;
+}
+
+.content .dayList .switchMonth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 42px;
+  width: 100%;
+  margin-bottom: 13px;
+}
+
+.content .dayList .switchMonth .lastMonth {
+  width: 20px;
+  height: 20px;
+}
+
+.content .dayList .switchMonth .yearAndMonth {
+  margin: 0 60px;
+  font-family: Roboto;
+  font-size: 36px;
+  color: #ffffff;
+}
+
+.content .dayList .switchMonth .nextMonth {
+  width: 20px;
+  height: 20px;
+}
+/*# sourceMappingURL=Weather-Detail.css.map */
