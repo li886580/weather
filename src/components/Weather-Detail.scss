@@ -4,19 +4,28 @@
   width: 100%;
   // background-color: green;
   border-radius: 15px;
-  padding-left: 35px;
+  padding-left: 10px;
   box-sizing: border-box;
   // background-image: url(../assets/54115c7c43151.jpg);
   background-image: url(../assets/87242691_p0.jpg);
   background-size: cover;
   filter: blur(0px);
+  a.back{
+    width: 30px;
+    height: 30px;
+    margin: 10px 10px 0 0;
+    img{
+      width: inherit;
+      height: inherit;  
+    }
+  }
   .information{
     height: 100%;
     width: calc(100% - 450px);
     // background-color: blue;
     padding-top: 25px;
     box-sizing: border-box;
-    .city{
+    a.city{
       display: flex;
       justify-content: center;
       align-items: center;
@@ -50,41 +59,126 @@
       }
       .weatherData__Detail{
         li{
+          display: flex;
           height: 30px;
           width: 100%;
-          background-color: aqua;
+          // background-color: aqua;
           margin-bottom: 8px;
           &:last-child{
             margin-bottom: 0px;
+          }
+          .listTitle{
+            width: 75px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            background-color: rgba(39, 39, 39, 0.61);
+            margin-right: 16px;
+            p{
+              font-family: Roboto;
+              font-size: 18px;
+              color: #ffffff;
+            }
+            img{
+              width: 20px;
+              height: 20px;
+              margin-left: 2px;
+            }
+          }
+          .listContent{
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            p{
+              font-family: Roboto;
+              font-size: 18px;
+              color: #ffffff;
+            }
           }
         }
       }
     }
   }
   .dayList{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
     height: 100%;
     width: 450px;
-    padding-top: 45px;
-    .switchMonth{
+    padding: 16px 70px 0 0;
+    box-sizing: border-box;
+    .switchDay{
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 42px;
-      width: 100%;
-      margin-bottom: 13px;
-      .lastMonth{
+      flex-flow: column;
+      align-items: flex-end;
+      a.lastDay{
         width: 20px;
         height: 20px;
+        margin-right: 30px;
+        img{
+          width: inherit;
+          height: inherit;
+        }
       }
-      .yearAndMonth{
-        margin: 0 60px;
-        font-family: Roboto;
-        font-size: 36px;
-        color: #ffffff;
+      .date{
+        display: flex;
+        margin: 10px 0 10px 0;
+        a.year{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        a.month{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 80px;
+          margin: 0 10px 0 10px;
+        }
+        p{
+          font-family: Roboto;
+          font-size: 36px;
+          color: #ffffff;
+          &.day{
+            display: flex;
+            justify-content: center;
+            width: 80px;
+          }
+        }
       }
-      .nextMonth{
+      a.nextDay{
         width: 20px;
         height: 20px;
+        margin-right: 30px;
+        img{
+          width: inherit;
+          height: inherit;
+        }
+      }
+    }
+    .sun-moon{
+      display: flex;
+      margin-top: 217px;
+      li{
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        margin-right: 13px;
+        &:last-child{
+          margin: 0;
+        }
+        img{
+          width: 60px;
+          height: 60px;
+        }
+        p{
+          font-family: Roboto;
+          font-size: 18px;
+          color: #ffffff;
+        }
       }
     }
   }

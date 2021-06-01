@@ -10,6 +10,7 @@
           box-sizing: border-box;
   background-image: url(../assets/87242691_p0.jpg);
   background-size: cover;
+  background-position: center;
   -webkit-filter: blur(0px);
           filter: blur(0px);
 }
@@ -22,7 +23,12 @@
           box-sizing: border-box;
 }
 
-.content .information .city {
+.content .information .citySelect {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.content .information .citySelect a.city {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -34,13 +40,66 @@
           align-items: center;
   height: 80px;
   width: 210px;
-  margin-bottom: 30px;
-}
-
-.content .information .city p {
   font-family: Roboto;
   font-size: 70px;
   color: #ffffff;
+}
+
+.content .information .citySelect a.city:hover {
+  background-color: rgba(163, 163, 163, 0.438);
+}
+
+.content .information .citySelect .option {
+  width: 60px;
+  height: 200px;
+  padding: 5px;
+  background-color: #dddddd;
+  border-radius: 5px;
+  position: absolute;
+  top: 85px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar {
+  background-color: rgba(255, 255, 255, 0);
+  width: 6px;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar-track {
+  background-color: #ffffff00;
+  width: 50px;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar-thumb {
+  background-color: #979797;
+  border-radius: 3px;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar-button {
+  display: none;
+}
+
+.content .information .citySelect .option li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60px;
+  height: 25px;
+  font-family: Roboto;
+  font-size: 12px;
+  color: black;
+  cursor: pointer;
+}
+
+.content .information .citySelect .option li:hover {
+  background-color: #bcdbff;
 }
 
 .content .information .weatherData {
@@ -117,6 +176,8 @@
   height: 100%;
   width: 450px;
   padding-top: 45px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .content .dayList .switchMonth {
@@ -139,8 +200,40 @@
   height: 20px;
 }
 
-.content .dayList .switchMonth .yearAndMonth {
-  margin: 0 60px;
+.content .dayList .switchMonth .date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 60px 0 60px;
+}
+
+.content .dayList .switchMonth .date a.year {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 10px;
+}
+
+.content .dayList .switchMonth .date a.month {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80px;
+}
+
+.content .dayList .switchMonth .date p {
   font-family: Roboto;
   font-size: 36px;
   color: #ffffff;
