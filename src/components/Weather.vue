@@ -56,11 +56,10 @@ export default {
       month: null,
       date: null,
       info: null,
-      weather: {'wxId': '01', 'wxName': ''},
+      weather: {'wxId': '', 'wxName': ''},
       temperature: '',
       humidity: null,
-      number: '01',
-      weatherIconPath: require('../assets/icon/weatherIcon/' + this.number + '.svg'),
+      weatherIconPath: '',
       citys: [{"id": 0, "cityName": "新竹縣"}, {"id": 1, "cityName": "金門縣"}, {"id": 2, "cityName": "苗栗縣"}, {"id": 3, "cityName": "新北市"}, {"id": 4, "cityName": "宜蘭縣"}, {"id": 5, "cityName": "雲林縣"}, {"id": 6, "cityName": "臺南市"}, {"id": 7, "cityName": "高雄市"}, {"id": 8, "cityName": "彰化縣"}, {"id": 9, "cityName": "臺北市"}, {"id": 10, "cityName": "南投縣"}, {"id": 11, "cityName": "澎湖縣"}, {"id": 12, "cityName": "基隆市"}, {"id": 13, "cityName": "桃園市"}, {"id": 14, "cityName": "花蓮縣"}, {"id": 15, "cityName": "連江縣"}, {"id": 16, "cityName": "臺東縣"}, {"id": 17, "cityName": "嘉義市"}, {"id": 18, "cityName": "嘉義縣"}, {"id": 19, "cityName": "屏東縣"}, {"id": 20, "cityName": "臺中市"}, {"id": 21, "cityName": "新竹市"}]
     }
   },
@@ -127,15 +126,30 @@ export default {
 
 
   },
-  
-  computed() {
+
+  computed: {
+    
   },
 
-  created() { //創建完成時
+  created: function(){ //創建完成時
     this.nowTimes();
     this.nowTimesDate();
-    // this.weatherIconPath = ''
-    // console.log(this)
+    this.$axios
+      .get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-E6B72E01-C0C6-4326-A1F1-7872CE97019F')
+      .then(response => {
+        // console.log(response)
+        this.info = response.data.records.locations[0].location
+        this.weather.wxId = this.info[this.city.id].weatherElement[6].time[0].elementValue[1].value
+        this.weather.wxName = this.info[this.city.id].weatherElement[6].time[0].elementValue[0].value
+        this.temperature = this.info[this.city.id].weatherElement[1].time[0].elementValue[0].value
+        this.humidity = this.info[this.city.id].weatherElement[0].time[0].elementValue[0].value
+        this.weatherIconPath = require('../assets/icon/weatherIcon/' + this.weather.wxId + '.svg')
+
+        })
+      
+      .catch(function (error) { // 請求失敗處理
+        console.log(error);
+      });
 
   },
 
@@ -144,34 +158,6 @@ export default {
   mounted(){ //掛載完成時
     this.nowTimes();
     this.nowTimesDate();
-
-    this.$axios
-      .get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-091?Authorization=CWB-E6B72E01-C0C6-4326-A1F1-7872CE97019F')
-      .then(response => (this.info = response.data.records.locations[0].location))
-      .catch(function (error) { // 請求失敗處理
-        console.log(error);
-      });
-
-
-
-  //   getUsers()
-  //   async function getUsers() {
-  //   try {
-  //     const get = await axios.get('http://localhost:3000/users')
-  //     const { data } = get // 資料在 data 屬性
-  //     console.dir(get) // 回傳類似 RequestObject
-  //     console.table(data)
-  //   } catch (error) {
-  //     throw new Error(error)
-  //   }
-  // }
-    // this.weather.wxId = this.info[this.city.id].weatherElement[6].time[0].elementValue[1].value
-    // this.weather.wxName = this.info[this.city.id].weatherElement[6].time[0].elementValue[0].value
-    // this.temperature = this.info[this.city.id].weatherElement[1].time[0].elementValue[0].value
-    // this.humidity = this.info[this.city.id].weatherElement[0].time[0].elementValue[0].value
-    
-    
-
   },
 
   
