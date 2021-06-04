@@ -174,7 +174,7 @@
 
 .content .dayList {
   height: 100%;
-  width: 450px;
+  width: 444px;
   padding-top: 45px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -247,8 +247,95 @@
 .content .dayList .monthlyCalendar {
   height: 412px;
   width: 100%;
-  border: 1px solid #ffffff;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.content .dayList .monthlyCalendar .week {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  height: 21px;
+  margin-bottom: 11px;
+}
+
+.content .dayList .monthlyCalendar .week .week__day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 60px;
+}
+
+.content .dayList .monthlyCalendar .week .week__day p {
+  font-family: Roboto;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.content .dayList .monthlyCalendar .lattice-group {
+  width: 100%;
+  height: calc(100% - 32px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice {
+  width: 60px;
+  height: 60px;
+  opacity: 0.9;
+  border-radius: 3px;
+  background-color: rgba(249, 249, 249, 0.36);
+  padding: 3px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice p.day {
+  display: block;
+  width: 16px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  color: #929292;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice p.active {
+  color: #000000;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice img.weather-day {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin-left: 16px;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice img.special-day {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 22px;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice img.moonPhase-day {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url("../assets/icon/blank.svg");
 }
 /*# sourceMappingURL=Weather.css.map */
