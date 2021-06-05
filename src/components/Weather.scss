@@ -2,18 +2,16 @@
     display: flex;
     height: 520px;
     width: 100%;
-    // background-color: green;
     border-radius: 15px;
     padding-left: 35px;
     box-sizing: border-box;
-    background-image: url(../assets/87242691_p0.jpg);
+    background-image: url(../assets/IMG_2468.png);
     background-size: cover;
     background-position: center;
     filter: blur(0px);
     .information{
       height: 100%;
       width: calc(100% - 450px);
-      // background-color: blue;
       padding-top: 25px;
       box-sizing: border-box;
       .citySelect{
@@ -29,7 +27,10 @@
           font-size: 70px;
           color: #ffffff;
           &:hover{
-            background-color: rgba(163, 163, 163, 0.438);
+            background-color: rgba(163, 163, 163, 0.253);
+          }
+          &:active{
+            background-color: rgba(163, 163, 163, 0.596);
           }
         }
         .option{
@@ -70,10 +71,9 @@
             &:hover{
               background-color: rgb(188, 219, 255);
             }
-            // background-color: rgb(255, 255, 255);
-            // border: 1px rgb(158, 158, 158) solid;
-            // border-bottom: 0;
-            // border-radius: 5px;
+            &:active{
+              background-color: rgb(137, 192, 255);
+            }
           }
         }
       }
@@ -111,6 +111,7 @@
             font-size: 18px;
             color: #ffffff;
             margin-right: 5px;
+            width: 28px;
           }
           img.humidity{
             height: 20px;
@@ -125,8 +126,6 @@
         }
       }
       .time{
-        // width: 144px;
-        // height: 56px;
         font-family: Roboto;
         font-size: 48px;
         color: #ffffff;
@@ -210,6 +209,12 @@
             background-color: rgba(249, 249, 249, 0.36);
             padding: 3px;
             box-sizing: border-box;
+            &:hover{
+              background-color: rgba(249, 249, 249, 0.637);
+            }
+            &:active{
+              background-color: rgba(249, 249, 249, 0.795);
+            }
             p.day{
               display: block;
               width: 16px;

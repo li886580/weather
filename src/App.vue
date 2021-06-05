@@ -31,8 +31,7 @@ export default {
     height: 100%;
     min-width: 768px;
     box-sizing: border-box;
-    /* background-image: url(./assets/54115c7c43151.jpg); */
-    background-image: url(./assets/87242691_p0.jpg);
+    background-image: url(./assets/IMG_2468.png);
     background-size: cover;
     position: relative;
     background-repeat: no-repeat;

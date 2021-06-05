@@ -8,7 +8,7 @@
   padding-left: 35px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  background-image: url(../assets/87242691_p0.jpg);
+  background-image: url(../assets/IMG_2468.png);
   background-size: cover;
   background-position: center;
   -webkit-filter: blur(0px);
@@ -46,7 +46,11 @@
 }
 
 .content .information .citySelect a.city:hover {
-  background-color: rgba(163, 163, 163, 0.438);
+  background-color: rgba(163, 163, 163, 0.253);
+}
+
+.content .information .citySelect a.city:active {
+  background-color: rgba(163, 163, 163, 0.596);
 }
 
 .content .information .citySelect .option {
@@ -102,6 +106,10 @@
   background-color: #bcdbff;
 }
 
+.content .information .citySelect .option li:active {
+  background-color: #89c0ff;
+}
+
 .content .information .weatherData {
   width: 100%;
   margin-bottom: 245px;
@@ -152,6 +160,7 @@
   font-size: 18px;
   color: #ffffff;
   margin-right: 5px;
+  width: 28px;
 }
 
 .content .information .weatherData .temperature-humidity img.humidity {
@@ -303,6 +312,14 @@
   padding: 3px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice:hover {
+  background-color: rgba(249, 249, 249, 0.637);
+}
+
+.content .dayList .monthlyCalendar .lattice-group a.lattice:active {
+  background-color: rgba(249, 249, 249, 0.795);
 }
 
 .content .dayList .monthlyCalendar .lattice-group a.lattice p.day {
