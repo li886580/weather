@@ -27,13 +27,18 @@
 
 .content .information {
   height: 100%;
-  width: calc(100% - 450px);
+  width: calc(100% - 400px);
   padding-top: 25px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-.content .information a.city {
+.content .information .citySelect {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.content .information .citySelect a.city {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,12 +51,74 @@
   height: 80px;
   width: 210px;
   margin-bottom: 30px;
-}
-
-.content .information a.city p {
   font-family: Roboto;
   font-size: 70px;
   color: #ffffff;
+}
+
+.content .information .citySelect a.city:hover {
+  background-color: rgba(163, 163, 163, 0.253);
+}
+
+.content .information .citySelect a.city:active {
+  background-color: rgba(163, 163, 163, 0.596);
+}
+
+.content .information .citySelect .option {
+  width: 60px;
+  height: 200px;
+  padding: 5px;
+  background-color: #dddddd;
+  border-radius: 5px;
+  position: absolute;
+  top: 85px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar {
+  background-color: rgba(255, 255, 255, 0);
+  width: 6px;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar-track {
+  background-color: #ffffff00;
+  width: 50px;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar-thumb {
+  background-color: #979797;
+  border-radius: 3px;
+}
+
+.content .information .citySelect .option::-webkit-scrollbar-button {
+  display: none;
+}
+
+.content .information .citySelect .option li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60px;
+  height: 25px;
+  font-family: Roboto;
+  font-size: 12px;
+  color: black;
+  cursor: pointer;
+}
+
+.content .information .citySelect .option li:hover {
+  background-color: #bcdbff;
+}
+
+.content .information .citySelect .option li:active {
+  background-color: #89c0ff;
 }
 
 .content .information .weatherData {
@@ -96,7 +163,7 @@
 }
 
 .content .information .weatherData .weatherData__Detail li .listTitle {
-  width: 75px;
+  min-width: 75px;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;

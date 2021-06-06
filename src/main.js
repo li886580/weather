@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
 
 Vue.config.productionTip = false
 
@@ -12,7 +9,12 @@ Vue.prototype.$axios = axios;
 import dayjs from 'dayjs';
 Vue.prototype.dayjs = dayjs;
 
+// new Vue({
+//   render: h => h(App),
+// }).$mount('#app')
+
+import store from './store';
 new Vue({
+  store,
   render: h => h(App),
 }).$mount('#app')
-
