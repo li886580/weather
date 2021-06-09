@@ -7,7 +7,7 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
       isLoading: false,
-      city: {id: 7, cityName: "高雄市"},
+      city: {id: 7, cityName: "高雄市", sid: 15},
       citys: require('../static/citys.json'),
       time: {
         year: null,

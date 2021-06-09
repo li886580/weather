@@ -1,19 +1,20 @@
 <template>
   <div class="backgroundImage">
-    <Weather/>
-    <WeatherDetail/>
+    <!-- <Weather/>
+    <WeatherDetail/> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Weather from './components/Weather'
-import WeatherDetail from './components/Weather-Detail'
+// import Weather from './components/Weather'
+// import WeatherDetail from './components/Weather-Detail'
 
 export default {
   name: 'App',
   components: {
-    Weather,
-    WeatherDetail
+    // Weather,
+    // WeatherDetail
   }
 }
 </script>

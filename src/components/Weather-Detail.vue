@@ -1,8 +1,8 @@
 <template>
-  <div class="content">
-    <a class="back">
+  <div class="contentDetail">
+    <router-link class="back" :to="{name:'Weather'}">
       <img src="../assets/icon/back.svg">
-    </a>
+    </router-link>
     <div class="information">
       <div class="citySelect">
         <a class="city" v-on:click="isSelectCity = !isSelectCity">{{this.$store.state.city.cityName}}</a>
@@ -54,18 +54,14 @@
     </div>
     <div class="dayList">
       <div class="switchDay">
+        <a class="date" v-on:click="today()">
+          <div class="date__content">{{this.$store.state.time.selectDate.year}}</div>
+          <div class="date__content">{{this.$store.state.time.selectDate.month}}月</div>
+          <div class="date__content">{{this.$store.state.time.selectDate.day}}日</div>
+        </a>
         <a class="lastDay" v-on:click="lastDay()">
           <img src="../assets/icon/up-arrow.svg">
         </a>
-        <div class="date">
-          <a class="year">
-            <p>{{this.$store.state.time.selectDate.year}}</p>
-          </a>
-          <a class="month">
-            <p>{{this.$store.state.time.selectDate.month}}月</p>
-          </a>
-          <p class="day">{{this.$store.state.time.selectDate.day}}日</p>
-        </div>
         <a class="nextDay" v-on:click="nextDay()">
           <img src="../assets/icon/down-arrow.svg">
         </a>
@@ -73,19 +69,19 @@
       <div class="sun-moon">
         <li class="sunrise">
           <img src="../assets/icon/wi-sunrise.svg">
-          <p class="sunrise__time">06:00</p>
+          <p class="sunrise__time">{{sun.sunrise}}</p>
         </li>
         <li class="sunset">
           <img src="../assets/icon/wi-sunset.svg">
-          <p class="sunset__time">17:00</p>
+          <p class="sunset__time">{{sun.sunset}}</p>
         </li>
         <li class="moonrise">
           <img src="../assets/icon/wi-moonrise.svg">
-          <p class="moonrise__time">23:00</p>
+          <p class="moonrise__time">{{moon.moonrise}}</p>
         </li>
         <li class="moonset">
           <img src="../assets/icon/wi-moonset.svg">
-          <p class="moonset__time">03:00</p>
+          <p class="moonset__time">{{moon.moonset}}</p>
         </li>
       </div>
     </div>
@@ -101,12 +97,19 @@ export default {
       humidity: null,
       special: '',
       moonPhase: '',
+      sun: {sunrise: '', sunset: ''},
+      moon: {smoonrise: '', moonset: ''},
+      sunInfo: '',
+      moonInfo: ''
     }
   },
 
   methods: {
     citySelect(city){ //選擇城市
       this.$store.state.city = city
+      this.getSunTime()
+      this.getMoonTime()
+
     },
 
 
@@ -121,6 +124,8 @@ export default {
         this.$store.state.time.selectDate.month = this.dayjs(formatDate).month()+1
         this.$store.state.time.selectDate.day = this.dayjs(formatDate).date()
       }
+      this.getSunTime()
+      this.getMoonTime()
     },
     nextDay(){
       let formatDate = this.dayjs(this.$store.state.time.selectDate.year + '-' + this.$store.state.time.selectDate.month + '-' + this.$store.state.time.selectDate.day).format('YYYY-MM-DD') //格式化時間
@@ -128,6 +133,15 @@ export default {
       this.$store.state.time.selectDate.year = this.dayjs(formatDate).year()
       this.$store.state.time.selectDate.month = this.dayjs(formatDate).month()+1
       this.$store.state.time.selectDate.day = this.dayjs(formatDate).date()
+      this.getSunTime()
+      this.getMoonTime()
+    },
+    today(){
+      this.$store.state.time.selectDate.year = this.dayjs().year()
+      this.$store.state.time.selectDate.month = this.dayjs().month()+1
+      this.$store.state.time.selectDate.day = this.dayjs().date()
+      this.getSunTime()
+      this.getMoonTime()
     },
 
 
@@ -146,20 +160,21 @@ export default {
         this.weather.wxId = this.$store.state.info[this.$store.state.city.id].weatherElement[6].time[findSelectDay1].elementValue[1].value
         this.weather.wxName = this.$store.state.info[this.$store.state.city.id].weatherElement[6].time[findSelectDay1].elementValue[0].value
         this.temperature = this.$store.state.info[this.$store.state.city.id].weatherElement[1].time[findSelectDay1].elementValue[0].value + "˚"
+
         if(this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay1].elementValue[0].value !== " "){ //下雨機率只有3天的資料，所以要多這個判斷
-        this.humidity = this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay1].elementValue[0].value + "%"
+          this.humidity = this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay1].elementValue[0].value + "%"
         }
         else{
           this.humidity = "無資料"
         }
-        console.log(this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay1].elementValue[0].value)
       }
       else if(findSelectDay2 !== -1){
         this.weather.wxId = this.$store.state.info[this.$store.state.city.id].weatherElement[6].time[findSelectDay2].elementValue[1].value
         this.weather.wxName = this.$store.state.info[this.$store.state.city.id].weatherElement[6].time[findSelectDay2].elementValue[0].value
         this.temperature = this.$store.state.info[this.$store.state.city.id].weatherElement[1].time[findSelectDay2].elementValue[0].value + "˚"
-        if(this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay1].elementValue[0].value !== " "){//下雨機率只有3天的資料，所以要多這個判斷
-        this.humidity = this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay2].elementValue[0].value + "%"
+
+        if(this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay2].elementValue[0].value !== " "){ //下雨機率只有3天的資料，所以要多這個判斷
+          this.humidity = this.$store.state.info[this.$store.state.city.id].weatherElement[0].time[findSelectDay2].elementValue[0].value + "%"
         }
         else{
           this.humidity = "無資料"
@@ -201,8 +216,74 @@ export default {
       else{
         this.moonPhase = "無特殊月象"
       }
+    },
+    getSunTime(){ //取得日升時間
+      Object.assign(this.$data.sun, this.$options.data().sun) //先初始化sun的資料
+      let formatDate = this.dayjs(this.$store.state.time.selectDate.year + '-' + this.$store.state.time.selectDate.month + '-' + this.$store.state.time.selectDate.day).format('YYYY-MM-DD') //格式化時間
+      let findSunTime = this.sunInfo.location[this.$store.state.city.sid].time.map(function (item){
+        return item.dataTime
+      }).indexOf(formatDate)
+      if(findSunTime !== -1){
+        this.sun.sunrise = this.sunInfo.location[this.$store.state.city.sid].time[findSunTime].parameter[1].parameterValue
+        this.sun.sunset = this.sunInfo.location[this.$store.state.city.sid].time[findSunTime].parameter[5].parameterValue
+      }
+      else{
+        this.sun.sunrise = "無資料"
+        this.sun.sunset = "無資料"
+      }
+    },
+    getMoonTime(){ //取得月落時間
+      Object.assign(this.$data.moon, this.$options.data().moon) //先初始化moon的資料
+      let formatDate = this.dayjs(this.$store.state.time.selectDate.year + '-' + this.$store.state.time.selectDate.month + '-' + this.$store.state.time.selectDate.day).format('YYYY-MM-DD') //格式化時間
+      let findMoonTime = this.moonInfo.location[this.$store.state.city.sid].time.map(function (item){
+        return item.dataTime
+      }).indexOf(formatDate)
+      if(findMoonTime !== -1){
+        this.moon.moonrise = this.moonInfo.location[this.$store.state.city.sid].time[findMoonTime].parameter[0].parameterValue
+        this.moon.moonset = this.moonInfo.location[this.$store.state.city.sid].time[findMoonTime].parameter[4].parameterValue
+
+        if(this.moonInfo.location[this.$store.state.city.sid].time[findMoonTime].parameter[0].parameterValue === ""){
+          this.moon.moonrise = "00:00"
+        }
+        if(this.moonInfo.location[this.$store.state.city.sid].time[findMoonTime].parameter[4].parameterValue === ""){
+          this.moon.moonset = "00:00"
+        }
+      }
+      else{
+        this.moon.moonrise = "無資料"
+        this.moon.moonset = "無資料"
+      }
     }
+
   },
+
+
+  created: function(){
+    this.getSelectDayWeather()
+    this.getSelectDaySpecial()
+    this.getSelectDayMoonPhase()
+    this.$axios
+      .get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/A-B0062-001?Authorization=CWB-E6B72E01-C0C6-4326-A1F1-7872CE97019F',)
+      .then(response => {
+        this.sunInfo = response.data.records.locations
+        this.getSunTime()
+      })
+      .catch(function (error) { // 請求失敗處理
+        console.log(error);
+      });
+    this.$axios
+      .get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/A-B0063-001?Authorization=CWB-E6B72E01-C0C6-4326-A1F1-7872CE97019F')
+      .then(response => {
+        this.moonInfo = response.data.records.locations
+        this.getMoonTime()
+      })
+      .catch(function (error) { // 請求失敗處理
+        console.log(error);
+      });
+    
+  },
+
+
   beforeUpdate(){
     this.getSelectDayWeather()
     this.getSelectDaySpecial()

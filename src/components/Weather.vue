@@ -24,19 +24,15 @@
     </div>
     <div class="dayList">
       <div class="switchMonth">
-        <a v-on:click="lastMonth()">
-          <img class="lastMonth" src="../assets/icon/left-arrow.svg">
+        <a class="lastMonth" v-on:click="lastMonth()">
+          <img src="../assets/icon/left-arrow.svg">
         </a>
-        <div class="date">
-          <a class="year">
-            <p>{{this.$store.state.time.year}}</p>
-          </a>
-          <a class="month">
-            <p>{{this.$store.state.time.month}}月</p>
-          </a>
-        </div>
-        <a v-on:click="nextMonth()">
-          <img class="nextMonth" src="../assets/icon/right-arrow.svg">
+        <a class="date" v-on:click="today()">
+          <div class="date__content">{{this.$store.state.time.year}}</div>
+          <div class="date__content">{{this.$store.state.time.month}}月</div>
+        </a>
+        <a class="nextMonth" v-on:click="nextMonth()">
+          <img src="../assets/icon/right-arrow.svg">
         </a>
       </div>
       <div class="monthlyCalendar">
@@ -64,12 +60,14 @@
           </div>
         </div>
         <div class="lattice-group">
-          <a class="lattice" v-for="lattice in lattices" :key="lattice.id" v-on:click="clickDay(lattice.date.year, lattice.date.month, lattice.date.day)">
-            <p class="day" v-bind:class="{active: lattice.isActive}">{{lattice.date.day}}</p>
-            <img v-bind:src="lattice.weather.icon" v-bind:title="lattice.weather.name" class="weather-day">
-            <img v-bind:src="lattice.special.icon" v-bind:title="lattice.special.name" class="special-day">
-            <img v-bind:src="lattice.moonPhase.icon" v-bind:title="lattice.moonPhase.name" class="moonPhase-day">
-          </a>
+          <router-link class="lattice" v-for="lattice in lattices" :key="lattice.id" :to="{name:'WeatherDetail'}">
+            <a v-on:click="clickDay(lattice.date.year, lattice.date.month, lattice.date.day)">
+              <p class="day" v-bind:class="{active: lattice.isActive}">{{lattice.date.day}}</p>
+              <img v-bind:src="lattice.weather.icon" v-bind:title="lattice.weather.name" class="weather-day">
+              <img v-bind:src="lattice.special.icon" v-bind:title="lattice.special.name" class="special-day">
+              <img v-bind:src="lattice.moonPhase.icon" v-bind:title="lattice.moonPhase.name" class="moonPhase-day">
+            </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -81,20 +79,14 @@ export default {
   data() {
     return {
       isSelectCity: false,
-      // city: {id: 7, cityName: "高雄市"},
       time: {
         nowTime: '',
-        // year: null,
-        // month: null,
         date: null,
       },
-      // info: null,
       weather: {wxId: '', wxName: '', icon: require('../assets/icon/blank.svg')},
       temperature: null,
       humidity: null,
-      // citys: require('../../static/citys.json'),
       lattices: [{id: 0, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 1, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 2, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 3, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 4, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 5, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 6, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 7, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 8, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 9, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 10, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 11, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 12, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 13, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 14, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 15, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 16, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 17, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 18, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 19, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 20, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 21, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 22, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 23, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 24, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 25, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 26, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 27, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 28, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 29, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 30, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 31, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 32, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 33, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 34, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 35, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 36, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 37, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 38, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 39, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 40, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false}, {id: 41, date: {year: null, month: null, day: null}, weather: {name: '' ,icon: require('../assets/icon/blank.svg')}, special: {name: '' ,icon: require('../assets/icon/blank.svg')}, moonPhase: {name: '', icon: require('../assets/icon/blank.svg')}, isActive: false},],
-      // star: require('../../static/star.json'),
     }
   },
 
@@ -151,6 +143,10 @@ export default {
         this.$store.state.time.month += 1
       }
       // this.getDay()
+    },
+    today(){
+      this.$store.state.time.year = this.dayjs().year()
+      this.$store.state.time.month = this.dayjs().month()+1
     },
 
 
@@ -265,7 +261,6 @@ export default {
           findLastMonth.date.year = this.$store.state.time.year
           findLastMonth.date.month = this.$store.state.time.month - 1
         }
-
       }
       this.getDayWeather()
     },

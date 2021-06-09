@@ -26,6 +26,7 @@
           font-family: Roboto;
           font-size: 70px;
           color: #ffffff;
+          transition: 0.3s;
           &:hover{
             background-color: rgba(163, 163, 163, 0.253);
           }
@@ -68,6 +69,7 @@
             font-size: 12px;
             color: black;
             cursor: pointer;
+            transition: 0.3s;
             &:hover{
               background-color: rgb(188, 219, 255);
             }
@@ -138,39 +140,73 @@
       box-sizing: border-box;
       .switchMonth{
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         height: 42px;
         width: 100%;
         margin-bottom: 13px;
-        .lastMonth{
-          width: 20px;
-          height: 20px;
-        }
-        .date{
+        padding: 0 70px;
+        box-sizing: border-box;
+        a.lastMonth{
           display: flex;
-          margin: 0 60px 0 60px;
-          a.year{
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+          border-radius: 10px;
+          transition: 0.3s;
+          &:hover{
+            background-color: rgba(163, 163, 163, 0.253);
+          }
+          &:active{
+            background-color: rgba(163, 163, 163, 0.596);
+          }
+          img{
+            width: 20px;
+            height: 20px;
+          }
+        }
+        a.date{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 180px;
+          height: 100%;
+          transition: 0.3s;
+          &:hover{
+            background-color: rgba(163, 163, 163, 0.253);
+          }
+          &:active{
+            background-color: rgba(163, 163, 163, 0.596);
+          }
+          .date__content{
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-right: 10px;
-          }
-          a.month{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 80px;
-          }
-          p{
+            height: 100%;
             font-family: Roboto;
             font-size: 36px;
             color: #ffffff;
           }
         }
-        .nextMonth{
-          width: 20px;
-          height: 20px;
+        a.nextMonth{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 30px;
+          height: 30px;
+          border-radius: 10px;
+          transition: 0.3s;
+          &:hover{
+            background-color: rgba(163, 163, 163, 0.253);
+          }
+          &:active{
+            background-color: rgba(163, 163, 163, 0.596);
+          }
+          img{
+            width: 20px;
+            height: 20px;
+          }
         }
       }
       .monthlyCalendar{
@@ -201,7 +237,7 @@
           flex-wrap: wrap;
           justify-content: space-between;
           align-content: space-between;
-          a.lattice{
+          .lattice{
             width: 60px;
             height: 60px;
             opacity: 0.9;
@@ -209,40 +245,46 @@
             background-color: rgba(249, 249, 249, 0.36);
             padding: 3px;
             box-sizing: border-box;
+            transition: 0.3s;
+            &:link{
+              text-decoration: none;
+            }
             &:hover{
               background-color: rgba(249, 249, 249, 0.637);
             }
             &:active{
               background-color: rgba(249, 249, 249, 0.795);
             }
-            p.day{
-              display: block;
-              width: 16px;
-              height: 16px;
-              font-family: Roboto;
-              font-size: 14px;
-              color: #929292;
-            }
-            p.active{
-              color: #000000;
-            }
-            img.weather-day{
-              display: block;
-              width: 22px;
-              height: 22px;
-              margin-left: 16px;
-            }
-            img.special-day{
-              display: inline-block;
-              width: 16px;
-              height: 16px;
-              margin-right: 22px;
-            }
-            img.moonPhase-day{
-              display: inline-block;
-              width: 16px;
-              height: 16px;
-              background-image: url("../assets/icon/blank.svg");
+            a{
+              p.day{
+                display: block;
+                width: 16px;
+                height: 16px;
+                font-family: Roboto;
+                font-size: 14px;
+                color: #929292;
+              }
+              p.active{
+                color: #000000;
+              }
+              img.weather-day{
+                display: block;
+                width: 22px;
+                height: 22px;
+                margin-left: 16px;
+              }
+              img.special-day{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                margin-right: 22px;
+              }
+              img.moonPhase-day{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("../assets/icon/blank.svg");
+              }
             }
           }
         }

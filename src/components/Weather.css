@@ -43,6 +43,8 @@
   font-family: Roboto;
   font-size: 70px;
   color: #ffffff;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .content .information .citySelect a.city:hover {
@@ -100,6 +102,8 @@
   font-size: 12px;
   color: black;
   cursor: pointer;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .content .information .citySelect .option li:hover {
@@ -193,30 +197,75 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   height: 42px;
   width: 100%;
   margin-bottom: 13px;
+  padding: 0 70px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-.content .dayList .switchMonth .lastMonth {
+.content .dayList .switchMonth a.lastMonth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.content .dayList .switchMonth a.lastMonth:hover {
+  background-color: rgba(163, 163, 163, 0.253);
+}
+
+.content .dayList .switchMonth a.lastMonth:active {
+  background-color: rgba(163, 163, 163, 0.596);
+}
+
+.content .dayList .switchMonth a.lastMonth img {
   width: 20px;
   height: 20px;
 }
 
-.content .dayList .switchMonth .date {
+.content .dayList .switchMonth a.date {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 0 60px 0 60px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 180px;
+  height: 100%;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.content .dayList .switchMonth .date a.year {
+.content .dayList .switchMonth a.date:hover {
+  background-color: rgba(163, 163, 163, 0.253);
+}
+
+.content .dayList .switchMonth a.date:active {
+  background-color: rgba(163, 163, 163, 0.596);
+}
+
+.content .dayList .switchMonth a.date .date__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -226,29 +275,38 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-right: 10px;
-}
-
-.content .dayList .switchMonth .date a.month {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 80px;
-}
-
-.content .dayList .switchMonth .date p {
+  height: 100%;
   font-family: Roboto;
   font-size: 36px;
   color: #ffffff;
 }
 
-.content .dayList .switchMonth .nextMonth {
+.content .dayList .switchMonth a.nextMonth {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.content .dayList .switchMonth a.nextMonth:hover {
+  background-color: rgba(163, 163, 163, 0.253);
+}
+
+.content .dayList .switchMonth a.nextMonth:active {
+  background-color: rgba(163, 163, 163, 0.596);
+}
+
+.content .dayList .switchMonth a.nextMonth img {
   width: 20px;
   height: 20px;
 }
@@ -303,7 +361,7 @@
       align-content: space-between;
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice {
+.content .dayList .monthlyCalendar .lattice-group .lattice {
   width: 60px;
   height: 60px;
   opacity: 0.9;
@@ -312,17 +370,23 @@
   padding: 3px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice:hover {
+.content .dayList .monthlyCalendar .lattice-group .lattice:link {
+  text-decoration: none;
+}
+
+.content .dayList .monthlyCalendar .lattice-group .lattice:hover {
   background-color: rgba(249, 249, 249, 0.637);
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice:active {
+.content .dayList .monthlyCalendar .lattice-group .lattice:active {
   background-color: rgba(249, 249, 249, 0.795);
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice p.day {
+.content .dayList .monthlyCalendar .lattice-group .lattice a p.day {
   display: block;
   width: 16px;
   height: 16px;
@@ -331,25 +395,25 @@
   color: #929292;
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice p.active {
+.content .dayList .monthlyCalendar .lattice-group .lattice a p.active {
   color: #000000;
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice img.weather-day {
+.content .dayList .monthlyCalendar .lattice-group .lattice a img.weather-day {
   display: block;
   width: 22px;
   height: 22px;
   margin-left: 16px;
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice img.special-day {
+.content .dayList .monthlyCalendar .lattice-group .lattice a img.special-day {
   display: inline-block;
   width: 16px;
   height: 16px;
   margin-right: 22px;
 }
 
-.content .dayList .monthlyCalendar .lattice-group a.lattice img.moonPhase-day {
+.content .dayList .monthlyCalendar .lattice-group .lattice a img.moonPhase-day {
   display: inline-block;
   width: 16px;
   height: 16px;
